@@ -257,7 +257,9 @@ class Shell:
         # need to deliver the SHIM to the remote host and execute it there
 
         command = [ssh]
-        if ssh != SCP_PATH:
+        if ssh == SCP_PATH:
+            command.append("-p")
+        else:
             command.append(self.host)
         if self.tty and ssh == SSH_PATH:
             command.append("-t -t")
